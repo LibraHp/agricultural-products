@@ -8,12 +8,12 @@
     <properties/>
     <border type="none" title="农副产品管理系统" title-justification="2" title-position="1">
       <font/>
-      <title-color color="-2104859"/>
+      <title-color color="-16777216"/>
     </border>
     <children>
       <component id="1c4be" class="javax.swing.JLabel" binding="username">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="用户名:"/>
@@ -21,7 +21,7 @@
       </component>
       <component id="565ca" class="javax.swing.JLabel" binding="password">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="密码:"/>
@@ -30,18 +30,22 @@
       <component id="7a015" class="javax.swing.JTextField" binding="inUsername">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="199" height="30"/>
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties/>
       </component>
-      <component id="97b03" class="javax.swing.JTextField" binding="inPassword">
+      <component id="97b03" class="javax.swing.JPasswordField" binding="inPassword">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="199" height="30"/>
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="11cec" class="javax.swing.JButton" binding="loginButton">
         <constraints>

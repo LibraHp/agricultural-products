@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Login{
     private JPanel main;
     private JTextField inUsername;
-    private JTextField inPassword;
+    private JPasswordField inPassword;
     private JButton loginButton;
     private JLabel password;
     private JLabel username;
@@ -20,9 +20,11 @@ public class Login{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = inUsername.getText();
-                String password = inPassword.getText();
+                char[] pwd = inPassword.getPassword();
+                String password = new String(pwd);
                 if (UserService.login(username, password)) {
                     JOptionPane.showMessageDialog(null, "登录成功");
+                    ListIframe.main(null);
                 }else{
                     JOptionPane.showMessageDialog(null, "登录失败,账号或密码错误");
                 }
@@ -38,12 +40,15 @@ public class Login{
     }
 
     public static void main(String[] args) {
+        Login login = new Login(); // 创建Login对象
         JFrame frame = new JFrame("Login");
-        frame.setContentPane(new Login().main);
+
+        frame.setSize(400, 300); // 设置窗口的大小
+        frame.setLocationRelativeTo(null); // 设置窗口居中
+
+        frame.setResizable(false);
+        frame.setContentPane(login.main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //使窗口居中
-        frame.setLocationRelativeTo(null);
-        frame.pack();
         frame.setVisible(true);
     }
 }
