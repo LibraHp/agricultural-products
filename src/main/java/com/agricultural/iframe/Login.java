@@ -22,7 +22,9 @@ public class Login{
                 String username = inUsername.getText();
                 String password = inPassword.getText();
                 if (UserService.login(username, password)) {
-                    JOptionPane.showMessageDialog(null, "success");
+                    JOptionPane.showMessageDialog(null, "登录成功");
+                }else{
+                    JOptionPane.showMessageDialog(null, "登录失败,账号或密码错误");
                 }
             }
         });

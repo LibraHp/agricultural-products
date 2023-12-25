@@ -8,14 +8,17 @@ import java.sql.ResultSet;
 public class UserDB {
     /**
      * 新增用户
+     *
      * @param usr
      */
     public static int addUser(User usr) {
         String sql = "insert into user (username, password, email, address, is_admin) values (?, ?, ?, ?, ?)";
         return DatabaseUtil.executeUpdate(sql, usr.getUsername(), usr.getPassword(), usr.getEmail(), usr.getAddress(), usr.getIs_admin());
     }
+
     /**
      * 删除用户
+     *
      * @param id
      */
     public static int deleteUser(int id) {
@@ -25,6 +28,7 @@ public class UserDB {
 
     /**
      * 修改用户
+     *
      * @param usr
      */
     public static int updateUser(User usr) {
@@ -34,17 +38,18 @@ public class UserDB {
 
     /**
      * 查询用户
+     *
      * @param id
      */
     public static User getUser(int id) {
         String sql = "select * from user where id = ?";
-        try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, id);) {
+        try (ResultSet resultSet = DatabaseUtil.executeQuery(sql, id);) {
             if (resultSet != null && resultSet.next()) {
                 return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
             } else {
                 return null;
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -63,13 +68,13 @@ public class UserDB {
      */
     public static User login(String username, String password) {
         String sql = "select * from user where username = ? and password = ?";
-        try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password)) {
+        try (ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password)) {
             if (resultSet != null && resultSet.next()) {
                 return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
             } else {
                 return null;
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
