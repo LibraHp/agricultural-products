@@ -38,9 +38,8 @@ public class UserDB {
      */
     public static User getUser(int id) {
         String sql = "select * from user where id = ?";
-        ResultSet resultSet = DatabaseUtil.executeQuery(sql, id);
-        try {
-            if (resultSet.next()) {
+        try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, id);) {
+            if (resultSet != null && resultSet.next()) {
                 return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
             } else {
                 return null;
@@ -64,9 +63,8 @@ public class UserDB {
      */
     public static User login(String username, String password) {
         String sql = "select * from user where username = ? and password = ?";
-        ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password);
-        try {
-            if (resultSet.next()) {
+        try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password)) {
+            if (resultSet != null && resultSet.next()) {
                 return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
             } else {
                 return null;

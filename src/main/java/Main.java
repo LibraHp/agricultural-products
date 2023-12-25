@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        DatabaseUtil.classDbInit();
+        //DatabaseUtil.classDbInit();
         String sql = "select * from user";
         ResultSet resultSet = DatabaseUtil.executeQuery(sql);
         while (resultSet.next()) {

@@ -67,4 +67,16 @@ public class User {
     public void setIs_admin(String is_admin) {
         this.is_admin = is_admin;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", is_admin='" + is_admin + '\'' +
+                '}';
+    }
 }
