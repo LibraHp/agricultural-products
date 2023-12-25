@@ -58,4 +58,22 @@ public class UserDB {
         String sql = "select * from user";
         return DatabaseUtil.executeQuery(sql);
     }
+
+    /**
+     * 用户登录
+     */
+    public static User login(String username, String password) {
+        String sql = "select * from user where username = ? and password = ?";
+        ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password);
+        try {
+            if (resultSet.next()) {
+                return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+            } else {
+                return null;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
