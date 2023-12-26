@@ -6,6 +6,8 @@ import com.agricultural.service.UserService;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login{
     private JPanel main;
@@ -15,6 +17,7 @@ public class Login{
     private JLabel password;
     private JLabel username;
     private JButton resetButton;
+    private JLabel signIn;
     private JFrame frame;
 
     public Login() {
@@ -48,6 +51,12 @@ public class Login{
             public void actionPerformed(ActionEvent e) {
                 inUsername.setText("");
                 inPassword.setText("");
+            }
+        });
+        signIn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SignIn signIn1 = new SignIn();
             }
         });
     }
