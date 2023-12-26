@@ -46,6 +46,12 @@ public class UserIframe {
                 super.mouseClicked(e);
             }
         });
+        myShop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                PurchaseList purchaseList = new PurchaseList(user.getId());
+            }
+        });
     }
 
     private void initializeComponents() {

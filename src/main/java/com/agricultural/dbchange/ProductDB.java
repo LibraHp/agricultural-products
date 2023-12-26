@@ -90,4 +90,14 @@ public class ProductDB {
         String sql = "INSERT INTO purchase (user_id, product_id, purchase_date) VALUES (?, ?, CURRENT_DATE)";
         return DatabaseUtil.executeUpdate(sql, userId, productId);
     }
+
+    /**
+     * 查询某个用户的购买记录
+     * @param userId
+     * @return
+     */
+    public static ResultSet getPurchaseListByUserId(int userId) {
+        String sql = "SELECT p.id, p.purchase_date, pr.name, pr.price FROM purchase p JOIN product pr ON p.product_id = pr.id WHERE p.user_id = ?";
+        return DatabaseUtil.executeQuery(sql, userId);
+    }
 }
