@@ -3,7 +3,6 @@ package com.agricultural.iframe;
 import com.agricultural.bean.User;
 
 import javax.swing.*;
-import java.awt.event.ContainerAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -18,10 +17,15 @@ public class UserIframe {
     private JLabel productList;
     private JLabel myShop;
     private JLabel goBack;
+    private JLabel userList;
+    private JFrame frame;
+    private User user;
 
     public UserIframe(User user) {
-        this.userName.setText("欢迎您："+user.getUsername());
+        this.user = user;
+        this.userName.setText("欢迎您：" + user.getUsername());
         this.userPermission.setText("您的身份为：" + (user.getIs_admin().equals("1") ? "管理员" : "普通用户"));
+        initializeUserInfo();
         initializeComponents();
         changeInfo.addMouseListener(new MouseAdapter() {
             @Override
@@ -29,14 +33,30 @@ public class UserIframe {
                 ChangeUserInfo changeUserInfo = new ChangeUserInfo(user);
             }
         });
+        goBack.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+                Login login = new Login();
+            }
+        });
     }
 
     private void initializeComponents() {
-        JFrame frame = new JFrame("UserIframe");
+        frame = new JFrame("UserIframe");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    private void initializeUserInfo() {
+        // 初始化用户信息
+        if(user.getIs_admin().equals("1")){
+            this.userList.setVisible(true);
+        }else{
+            main.remove(userList);
+        }
     }
 }

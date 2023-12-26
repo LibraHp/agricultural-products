@@ -15,6 +15,7 @@ public class Login{
     private JLabel password;
     private JLabel username;
     private JButton resetButton;
+    private JFrame frame;
 
     public Login() {
         initializeComponents();
@@ -30,7 +31,6 @@ public class Login{
                 if (user != null) {
                     JOptionPane.showMessageDialog(null, "登录成功");
                     // 销毁当前页面
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(main);
                     frame.dispose();
                     // 跳转页面
                     UserIframe userIframe = new UserIframe(user);
@@ -53,7 +53,7 @@ public class Login{
     }
 
     private void initializeComponents() {
-        JFrame frame = new JFrame("Login");
+        frame = new JFrame("Login");
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
         frame.setContentPane(main);
