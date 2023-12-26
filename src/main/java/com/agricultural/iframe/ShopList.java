@@ -15,7 +15,6 @@ public class ShopList {
     private JScrollPane tableBody;
 
     public ShopList() {
-
         initializeComponents();
         initializeTableList();
     }
