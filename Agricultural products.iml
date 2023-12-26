@@ -10,5 +10,6 @@
     <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
     <orderEntry type="library" name="jgoodies-forms-1.8.0" level="project" />
     <orderEntry type="library" name="jgoodies-common-1.8.0" level="project" />
+    <orderEntry type="library" name="beautyeye_lnf" level="project" />
   </component>
 </module>

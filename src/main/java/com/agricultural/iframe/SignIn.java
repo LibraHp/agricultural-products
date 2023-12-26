@@ -53,7 +53,7 @@ public class SignIn {
 
     private void initializeComponents() {
         frame = new JFrame("SignIn");
-        frame.setSize(500, 300);
+        frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
