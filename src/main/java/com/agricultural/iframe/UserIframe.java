@@ -17,7 +17,6 @@ public class UserIframe {
     private JLabel productList;
     private JLabel myShop;
     private JLabel goBack;
-    private JLabel userList;
     private JFrame frame;
     private User user;
 
@@ -25,8 +24,8 @@ public class UserIframe {
         this.user = user;
         this.userName.setText("欢迎您：" + user.getUsername());
         this.userPermission.setText("您的身份为：" + (user.getIs_admin().equals("1") ? "管理员" : "普通用户"));
-        initializeUserInfo();
         initializeComponents();
+
         changeInfo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -40,6 +39,13 @@ public class UserIframe {
                 Login login = new Login();
             }
         });
+        productList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ShopList shoplist = new ShopList();
+                super.mouseClicked(e);
+            }
+        });
     }
 
     private void initializeComponents() {
@@ -49,14 +55,5 @@ public class UserIframe {
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-    }
-
-    private void initializeUserInfo() {
-        // 初始化用户信息
-        if(user.getIs_admin().equals("1")){
-            this.userList.setVisible(true);
-        }else{
-            main.remove(userList);
-        }
     }
 }
