@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class DatabaseUtil {
     private static Connection cn = null;
+
     static {
         try {
             String url = "jdbc:mysql://localhost:3306/agricultural";
@@ -15,10 +16,22 @@ public class DatabaseUtil {
         }
     }
 
+    /**
+     * 获取数据库连接池
+     *
+     * @return
+     */
     public static Connection classDbInit() {
         return cn;
     }
 
+    /**
+     * 执行查询sql语句
+     *
+     * @param sql
+     * @param params
+     * @return
+     */
     public static ResultSet executeQuery(String sql, Object... params) {
         PreparedStatement pstm = null;
         try {
@@ -36,6 +49,13 @@ public class DatabaseUtil {
         }
     }
 
+    /**
+     * 执行更新sql语句
+     *
+     * @param sql
+     * @param params
+     * @return
+     */
     public static Integer executeUpdate(String sql, Object... params) {
         PreparedStatement pstm = null;
         try {
@@ -58,6 +78,12 @@ public class DatabaseUtil {
         }
     }
 
+    /**
+     * 执行单句sql
+     *
+     * @param sql
+     * @return
+     */
     public static ResultSet singleSentenceSql(String sql) {
         Statement stm = null;
         try {
@@ -69,6 +95,9 @@ public class DatabaseUtil {
         }
     }
 
+    /**
+     * 关闭数据库链接
+     */
     public static void closeDb() {
         try {
             cn.close();

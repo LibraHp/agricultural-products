@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
+    /**
+     * 获取产品列表
+     * @return
+     */
     public static List<Product> getProductList() {
         try(ResultSet productList = ProductDB.getProductList()){
             List<Product> products = new ArrayList<>();
