@@ -11,7 +11,7 @@ public class ChangeUserInfo {
     private JPanel main;
     private JLabel title;
     private JPanel body;
-    private JTextField inUsername;
+    private JLabel inUsername;
     private JLabel username;
     private JTextField inPassword;
     private JTextField inMail;

@@ -38,13 +38,15 @@
               <text value="用户名"/>
             </properties>
           </component>
-          <component id="4d087" class="javax.swing.JTextField" binding="inUsername">
+          <component id="804dd" class="javax.swing.JLabel" binding="inUsername">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="Label"/>
+            </properties>
           </component>
           <component id="dd92e" class="javax.swing.JLabel" binding="password">
             <constraints>
