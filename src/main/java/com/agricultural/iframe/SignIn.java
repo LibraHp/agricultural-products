@@ -21,6 +21,7 @@ public class SignIn {
     private JButton submit;
     private JLabel repeatPassword;
     private JTextField inRepeatPassword;
+    private JFrame frame;
 
     public SignIn() {
         initializeComponents();
@@ -40,7 +41,8 @@ public class SignIn {
                     user.setIs_admin("0");
                     int res = UserDB.addUser(user);
                     if (res == 1) {
-                        JOptionPane.showMessageDialog(null, "注册成功");
+                        JOptionPane.showMessageDialog(null, "注册成功，请返回登录");
+                        frame.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "注册失败");
                     }
@@ -50,8 +52,8 @@ public class SignIn {
     }
 
     private void initializeComponents() {
-        JFrame frame = new JFrame("SignIn");
-        frame.setSize(500, 400);
+        frame = new JFrame("SignIn");
+        frame.setSize(500, 300);
         frame.setLocationRelativeTo(null);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
