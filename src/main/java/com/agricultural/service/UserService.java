@@ -14,8 +14,8 @@ public class UserService {
      * @param password
      * @return
      */
-    public static boolean login(String username,String password){
-        return UserDB.login(username, password) != null;
+    public static User login(String username,String password){
+        return UserDB.login(username, password);
     }
 
     /**
