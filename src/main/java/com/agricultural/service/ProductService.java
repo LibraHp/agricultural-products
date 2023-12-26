@@ -30,4 +30,7 @@ public class ProductService {
             return null;
         }
     }
+    public static int buyProduct(int id){
+        return 0;
+    }
 }
