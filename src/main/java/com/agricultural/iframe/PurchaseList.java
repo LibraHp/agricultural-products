@@ -36,13 +36,17 @@ public class PurchaseList {
         }catch (Exception e){
             e.printStackTrace();
         }
+
         // 添加表格列头
         tableList.setModel(model); // 设置表格的数据模型
+        tableList.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tableList.getColumnModel().getColumn(2).setPreferredWidth(10);
+        tableList.getColumnModel().getColumn(3).setPreferredWidth(10);
     }
 
     private void initializeComponents() {
-        JFrame frame = new JFrame("ShopList");
-        frame.setSize(500, 400);
+        JFrame frame = new JFrame("PurchaseList");
+        frame.setSize(600, 500);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setContentPane(main);

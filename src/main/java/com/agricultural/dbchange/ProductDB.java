@@ -78,8 +78,13 @@ public class ProductDB {
      * @return
      */
     public static int buyProduct(int userId,int productId) {
-        String sql = "INSERT INTO purchase (user_id, product_id, purchase_date) VALUES (?, ?, CURRENT_DATE)";
+        String sql = "INSERT INTO purchase (user_id, product_id, purchase_date) VALUES (?, ?, CURRENT_TIMESTAMP)";
+        upSale(productId);
         return DatabaseUtil.executeUpdate(sql, userId, productId);
+    }
+    public static void upSale(int productId){
+        String sql = "UPDATE sales SET total_sales = total_sales + 1 WHERE product_id = ?";
+        DatabaseUtil.executeUpdate(sql,productId);
     }
 
     /**
