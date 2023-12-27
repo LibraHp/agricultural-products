@@ -53,6 +53,12 @@ public class UserIframe {
                 PurchaseList purchaseList = new PurchaseList(user.getId());
             }
         });
+        sales.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SalesIframe salesIframe = new SalesIframe();
+            }
+        });
     }
 
     private void initializeComponents() {
