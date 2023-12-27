@@ -108,9 +108,9 @@ public class ShopList {
                 int selectedIndex = selectModel.getSelectedIndex();
                 switch (selectedIndex){
                     case 1:
-                        System.out.println("分类");
                         searchText.setVisible(false);
                         categoryList.setVisible(true);
+                        categoryList.removeAllItems();
                         List<Category> categoryItems = CategoryDB.getCategoryList();
                         for(Category cg : categoryItems){
                             categoryList.addItem(cg.getName());
@@ -118,7 +118,6 @@ public class ShopList {
                         frame.revalidate();
                         break;
                     case 2:
-                        System.out.println("价格");
                         searchText.setVisible(true);
                         categoryList.setVisible(false);
                         frame.revalidate();
