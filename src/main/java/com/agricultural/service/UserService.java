@@ -2,6 +2,7 @@ package com.agricultural.service;
 
 import com.agricultural.bean.User;
 import com.agricultural.dbchange.UserDB;
+import com.agricultural.util.DatabaseUtil;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,7 +17,16 @@ public class UserService {
      * @return
      */
     public static User login(String username, String password) {
-        return UserDB.login(username, password);
+        try (ResultSet resultSet = UserDB.login(username,password)) {
+            if (resultSet != null && resultSet.next()) {
+                return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -60,6 +70,24 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * 查询用户
+     *
+     * @param id
+     */
+    public static User getUser(int id) {
+        try (ResultSet resultSet = UserDB.getUser(id)) {
+            if (resultSet != null && resultSet.next()) {
+                return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -41,18 +41,9 @@ public class UserDB {
      *
      * @param id
      */
-    public static User getUser(int id) {
+    public static ResultSet getUser(int id) {
         String sql = "select * from user where id = ?";
-        try (ResultSet resultSet = DatabaseUtil.executeQuery(sql, id);) {
-            if (resultSet != null && resultSet.next()) {
-                return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DatabaseUtil.executeQuery(sql, id);
     }
 
     /**
@@ -64,21 +55,21 @@ public class UserDB {
     }
 
     /**
-     * 用户登录
+     * 用户登录方法
+     * @param username
+     * @param password
+     * @return
      */
-    public static User login(String username, String password) {
+    public static ResultSet login(String username, String password) {
         String sql = "select * from user where username = ? and password = ?";
-        try (ResultSet resultSet = DatabaseUtil.executeQuery(sql, username, password)) {
-            if (resultSet != null && resultSet.next()) {
-                return new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return DatabaseUtil.executeQuery(sql, username, password);
     }
+
+    /**
+     * 检查用户名是否存在
+     * @param username
+     * @return
+     */
     public static ResultSet checkUser(String username){
         String sql = "select * from user where username = ?";
         return DatabaseUtil.executeQuery(sql,username);
