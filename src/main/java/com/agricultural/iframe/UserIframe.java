@@ -43,7 +43,6 @@ public class UserIframe {
             @Override
             public void mouseClicked(MouseEvent e) {
                 ShopList shoplist = new ShopList();
-                super.mouseClicked(e);
             }
         });
         myShop.addMouseListener(new MouseAdapter() {
@@ -58,6 +57,7 @@ public class UserIframe {
         frame = new JFrame("UserIframe");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

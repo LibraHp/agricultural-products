@@ -2,6 +2,7 @@ package com.agricultural.iframe;
 
 import com.agricultural.bean.User;
 import com.agricultural.dbchange.UserDB;
+import com.agricultural.service.UserService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,8 @@ public class SignIn {
                     JOptionPane.showMessageDialog(null, "请填写完整");
                 } else if (!inPassword.getText().equals(inRepeatPassword.getText())) {
                     JOptionPane.showMessageDialog(null, "两次密码不一致");
+                } else if (UserService.checkUser(inUsername.getText())) {
+                    JOptionPane.showMessageDialog(null, "用户名已存在");
                 } else {
                     User user = new User();
                     user.setUsername(inUsername.getText());
@@ -55,6 +58,7 @@ public class SignIn {
         frame = new JFrame("SignIn");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
