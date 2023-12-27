@@ -1,7 +1,7 @@
 package com.agricultural.iframe;
 
 import com.agricultural.bean.Product;
-import com.agricultural.bean.User;
+import com.agricultural.dbchange.CategoryDB;
 import com.agricultural.dbchange.ProductDB;
 import com.agricultural.service.ProductService;
 
@@ -27,6 +27,10 @@ public class ShopList {
     private JLabel outShopPrice;
     private JLabel shopDescription;
     private JLabel outShopDescription;
+    private JPanel searchView;
+    private JComboBox selectModel;
+    private JTextField searchText;
+    private JButton search;
     private Product selectProduct;
 
     public ShopList(int userId) {
@@ -38,8 +42,8 @@ public class ShopList {
                 if (!e.getValueIsAdjusting()) {
                     // 获取选中的行索引
                     int selectedRow = tableList.getSelectedRow();
-                    int productId = (int) tableList.getValueAt(selectedRow,0);
-                    selectProduct = ProductDB.getProduct(productId);
+                    int productId = (int) tableList.getValueAt(selectedRow, 0);
+                    selectProduct = ProductService.getProduct(productId);
                     outShopName.setText(selectProduct.getName());
                     outShopDescription.setText(selectProduct.getDescription());
                     outShopPrice.setText(Double.toString(selectProduct.getPrice()));
@@ -56,9 +60,9 @@ public class ShopList {
         buy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(selectProduct != null && ProductService.buyProduct(userId,selectProduct.getId()) == 1){
+                if (selectProduct != null && ProductService.buyProduct(userId, selectProduct.getId()) == 1) {
                     JOptionPane.showMessageDialog(null, "购买成功，谢谢惠顾！");
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "请选择商品后再购买");
                 }
             }
@@ -79,18 +83,20 @@ public class ShopList {
             Object[] rowData = new Object[5];
             rowData[0] = product.getId();
             rowData[1] = product.getName();
-            rowData[2] = product.getCategoryId();
+            rowData[2] = CategoryDB.getCategoryListByID(product.getCategoryId()).getName();
             rowData[3] = product.getPrice();
             rowData[4] = product.getDescription();
             model.addRow(rowData);
         }
-        // 添加表格列头
-        tableList.setModel(model); // 设置表格的数据模型
+        // 设置表格的数据模型
+        tableList.setModel(model);
+        // 设置表格选择模式为单选
+        tableList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     private void initializeComponents() {
         JFrame frame = new JFrame("ShopList");
-        frame.setSize(500, 400);
+        frame.setSize(500, 600);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setContentPane(main);

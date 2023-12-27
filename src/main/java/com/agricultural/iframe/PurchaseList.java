@@ -1,13 +1,10 @@
 package com.agricultural.iframe;
 
-import com.agricultural.bean.Product;
 import com.agricultural.dbchange.ProductDB;
-import com.agricultural.service.ProductService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
-import java.util.List;
 
 public class PurchaseList {
     private JPanel main;
