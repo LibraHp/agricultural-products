@@ -47,6 +47,7 @@ public class PurchaseList {
         JFrame frame = new JFrame("ShopList");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
