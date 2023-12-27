@@ -10,22 +10,24 @@ import java.util.List;
 public class UserService {
     /**
      * 用户登录方法
+     *
      * @param username
      * @param password
      * @return
      */
-    public static User login(String username,String password){
+    public static User login(String username, String password) {
         return UserDB.login(username, password);
     }
 
     /**
      * 获取用户列表
+     *
      * @return
      */
-    public static List<User> getUserList(){
-        try(ResultSet userList = UserDB.getUserList()){
+    public static List<User> getUserList() {
+        try (ResultSet userList = UserDB.getUserList()) {
             List<User> users = new ArrayList<>();
-            while (userList.next()){
+            while (userList.next()) {
                 User user = new User();
                 user.setId(userList.getInt(1));
                 user.setUsername(userList.getString(2));
@@ -40,5 +42,24 @@ public class UserService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 查询用户名是否存在
+     *
+     * @param username
+     * @return
+     */
+    public static boolean checkUser(String username) {
+        try (ResultSet resultSet = UserDB.checkUser(username)) {
+            if (resultSet != null && resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

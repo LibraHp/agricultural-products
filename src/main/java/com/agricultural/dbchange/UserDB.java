@@ -79,4 +79,8 @@ public class UserDB {
             return null;
         }
     }
+    public static ResultSet checkUser(String username){
+        String sql = "select * from user where username = ?";
+        return DatabaseUtil.executeQuery(sql,username);
+    }
 }
