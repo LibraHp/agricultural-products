@@ -1,8 +1,8 @@
 package com.agricultural.iframe;
 
+import com.agricultural.bean.Category;
 import com.agricultural.bean.Product;
 import com.agricultural.dbchange.CategoryDB;
-import com.agricultural.dbchange.ProductDB;
 import com.agricultural.service.ProductService;
 
 import javax.swing.*;
@@ -31,11 +31,14 @@ public class ShopList {
     private JComboBox selectModel;
     private JTextField searchText;
     private JButton search;
+    private JComboBox categoryList;
     private Product selectProduct;
+    private JFrame frame;
 
     public ShopList(int userId) {
         initializeComponents();
-        initializeTableList();
+        categoryList.setVisible(false);
+        initializeTableList(ProductService.getProductList());
         tableList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -52,8 +55,6 @@ public class ShopList {
                     for (int col = 0; col < tableList.getColumnCount(); col++) {
                         rowData[col] = tableList.getValueAt(selectedRow, col);
                     }
-                    System.out.println("Selected Row: " + selectedRow);
-                    System.out.println("Selected Data: " + java.util.Arrays.toString(rowData));
                 }
             }
         });
@@ -67,18 +68,78 @@ public class ShopList {
                 }
             }
         });
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = selectModel.getSelectedIndex();
+                switch (selectedIndex){
+                    case 0:
+                        JOptionPane.showMessageDialog(null, "请选择查询的内容");
+                        break;
+                    case 1:
+                        List<Product> withCategory = ProductService.searchByCategory(categoryList.getSelectedIndex() + 1);
+                        initializeTableList(withCategory);
+                        break;
+                    case 2:
+                        if(!searchText.getText().isEmpty()){
+                            List<Product> withPrice = ProductService.searchByPrice(Double.parseDouble(searchText.getText()));
+                            initializeTableList(withPrice);
+
+                        }else{
+                            JOptionPane.showMessageDialog(null, "请输入内容！");
+                        }
+                        break;
+                    case 3:
+                        if(!searchText.getText().isEmpty()){
+                            List<Product> withName = ProductService.searchByName(searchText.getText());
+                            initializeTableList(withName);
+                        }else{
+                            JOptionPane.showMessageDialog(null, "请输入内容！");
+                        }
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "查询出错！");
+                }
+            }
+        });
+        selectModel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = selectModel.getSelectedIndex();
+                switch (selectedIndex){
+                    case 1:
+                        System.out.println("分类");
+                        searchText.setVisible(false);
+                        categoryList.setVisible(true);
+                        List<Category> categoryItems = CategoryDB.getCategoryList();
+                        for(Category cg : categoryItems){
+                            categoryList.addItem(cg.getName());
+                        }
+                        frame.revalidate();
+                        break;
+                    case 2:
+                        System.out.println("价格");
+                        searchText.setVisible(true);
+                        categoryList.setVisible(false);
+                        frame.revalidate();
+                        break;
+                    default:
+                        searchText.setVisible(true);
+                        categoryList.setVisible(false);
+                        frame.revalidate();
+                }
+            }
+        });
     }
 
     /**
      * 初始化表格数据
      */
-    private void initializeTableList() {
+    private void initializeTableList(List<Product> productList) {
         // 初始化表格组件
         DefaultTableModel model = new DefaultTableModel();
         // 设置表头
         model.setColumnIdentifiers(new Object[]{"ID", "名称", "分类", "价格", "描述"});
-        // 获取产品数据
-        List<Product> productList = ProductService.getProductList();
         for (Product product : productList) {
             Object[] rowData = new Object[5];
             rowData[0] = product.getId();
@@ -95,7 +156,7 @@ public class ShopList {
     }
 
     private void initializeComponents() {
-        JFrame frame = new JFrame("ShopList");
+        frame = new JFrame("ShopList");
         frame.setSize(500, 600);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

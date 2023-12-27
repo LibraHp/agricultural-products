@@ -14,8 +14,8 @@ public class CategoryDB {
             List<Category> categoryList = new ArrayList<>();
             while (resultSet != null && resultSet.next()){
                 Category category = new Category();
-                category.setId(resultSet.getInt(0));
-                category.setName(resultSet.getString(1));
+                category.setId(resultSet.getInt(1));
+                category.setName(resultSet.getString(2));
                 categoryList.add(category);
             }
             return categoryList;

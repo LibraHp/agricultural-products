@@ -91,4 +91,35 @@ public class ProductDB {
         String sql = "SELECT p.id, p.purchase_date, pr.name, pr.price FROM purchase p JOIN product pr ON p.product_id = pr.id WHERE p.user_id = ?";
         return DatabaseUtil.executeQuery(sql, userId);
     }
+
+    /**
+     * 通过分类查询产品
+     * @param categoryId
+     * @return
+     */
+    public static ResultSet searchByCategory(int categoryId){
+        String sql = "SELECT * FROM product WHERE category_id = ?";
+        return DatabaseUtil.executeQuery(sql,categoryId);
+    }
+
+    /**
+     * 通过名称查询产品
+     * @param name
+     * @return
+     */
+    public static ResultSet searchByName(String name){
+        name = "%" + name + "%";
+        String sql = "SELECT * FROM product WHERE name LIKE ?";
+        return DatabaseUtil.executeQuery(sql,name);
+    }
+
+    /**
+     * 通过价格查询产品
+     * @param price
+     * @return
+     */
+    public static ResultSet searchByPrice(double price){
+        String sql = "SELECT * FROM product WHERE price <= ?";
+        return DatabaseUtil.executeQuery(sql,price);
+    }
 }
