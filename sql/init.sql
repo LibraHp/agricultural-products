@@ -37,7 +37,7 @@ CREATE TABLE purchase
     id            INT PRIMARY KEY AUTO_INCREMENT,
     user_id       INT,
     product_id    INT,
-    purchase_date DATE
+    purchase_date DATETIME
 );
 
 -- 创建表：销量统计
@@ -70,12 +70,15 @@ VALUES ('user1', 'password1', 'user1@example.com', '地址1', false),
 
 -- 插入示例数据：购买记录
 INSERT INTO purchase (user_id, product_id, purchase_date)
-VALUES (1, 1, '2023-12-01'),
-       (1, 2, '2023-12-02'),
-       (2, 3, '2023-12-03');
+VALUES (1, 1, '2023-12-27 23:45:37'),
+       (1, 2, '2023-12-27 23:45:37'),
+       (2, 3, '2023-12-27 23:45:37');
 
 -- 插入示例数据：销量统计
 INSERT INTO sales (total_sales)
-VALUES (10),
-       (15),
-       (5);
+VALUES (0),
+       (0),
+       (0),
+       (0),
+       (0),
+       (0);
