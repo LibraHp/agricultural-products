@@ -17,15 +17,17 @@ public class UserIframe {
     private JLabel productList;
     private JLabel myShop;
     private JLabel goBack;
+    private JPanel adminOptions;
+    private JLabel userManagement;
+    private JLabel productManagement;
+    private JLabel sales;
     private JFrame frame;
     private User user;
 
     public UserIframe(User user) {
         this.user = user;
-        this.userName.setText("欢迎您：" + user.getUsername());
-        this.userPermission.setText("您的身份为：" + (user.getIs_admin().equals("1") ? "管理员" : "普通用户"));
         initializeComponents();
-
+        checkAdmin();
         changeInfo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -61,5 +63,18 @@ public class UserIframe {
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+    }
+    private void checkAdmin(){
+        boolean isAdmin = user.getIs_admin().equals("1");
+        userName.setText("欢迎您：" + user.getUsername());
+        userPermission.setText("您的身份为：" + (isAdmin ? "管理员" : "普通用户"));
+        if (isAdmin){
+            userOptions.setVisible(false);
+            adminOptions.setVisible(true);
+        }else{
+            userOptions.setVisible(true);
+            adminOptions.setVisible(false);
+        }
+        frame.revalidate();
     }
 }
