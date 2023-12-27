@@ -76,7 +76,7 @@
               <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
-              <font size="18"/>
+              <font size="20"/>
               <text value="修改信息"/>
             </properties>
           </component>
@@ -86,7 +86,7 @@
               <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
-              <font size="18"/>
+              <font size="20"/>
               <text value="商品列表"/>
             </properties>
           </component>
@@ -96,7 +96,7 @@
               <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
-              <font size="18"/>
+              <font size="20"/>
               <text value="我的购买"/>
             </properties>
           </component>
@@ -106,7 +106,7 @@
               <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
-              <font size="18"/>
+              <font size="20"/>
               <text value="返回登录"/>
             </properties>
           </component>

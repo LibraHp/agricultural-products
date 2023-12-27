@@ -1,10 +1,16 @@
 package com.agricultural.iframe;
 
 import com.agricultural.bean.Product;
+import com.agricultural.bean.User;
+import com.agricultural.dbchange.ProductDB;
 import com.agricultural.service.ProductService;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ShopList {
@@ -13,10 +19,50 @@ public class ShopList {
     private JLabel title;
     private JTable tableList;
     private JScrollPane tableBody;
+    private JPanel shopping;
+    private JButton buy;
+    private JLabel shopName;
+    private JLabel outShopName;
+    private JLabel shopPrice;
+    private JLabel outShopPrice;
+    private JLabel shopDescription;
+    private JLabel outShopDescription;
+    private Product selectProduct;
 
-    public ShopList() {
+    public ShopList(int userId) {
         initializeComponents();
         initializeTableList();
+        tableList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    // 获取选中的行索引
+                    int selectedRow = tableList.getSelectedRow();
+                    int productId = (int) tableList.getValueAt(selectedRow,0);
+                    selectProduct = ProductDB.getProduct(productId);
+                    outShopName.setText(selectProduct.getName());
+                    outShopDescription.setText(selectProduct.getDescription());
+                    outShopPrice.setText(Double.toString(selectProduct.getPrice()));
+                    // 显示选中行的数据
+                    Object[] rowData = new Object[tableList.getColumnCount()];
+                    for (int col = 0; col < tableList.getColumnCount(); col++) {
+                        rowData[col] = tableList.getValueAt(selectedRow, col);
+                    }
+                    System.out.println("Selected Row: " + selectedRow);
+                    System.out.println("Selected Data: " + java.util.Arrays.toString(rowData));
+                }
+            }
+        });
+        buy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(selectProduct != null && ProductService.buyProduct(userId,selectProduct.getId()) == 1){
+                    JOptionPane.showMessageDialog(null, "购买成功，谢谢惠顾！");
+                }else {
+                    JOptionPane.showMessageDialog(null, "请选择商品后再购买");
+                }
+            }
+        });
     }
 
     /**

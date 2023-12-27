@@ -30,7 +30,7 @@ public class ProductService {
             return null;
         }
     }
-    public static int buyProduct(int id){
-        return 0;
+    public static int buyProduct(int userId,int productId){
+        return ProductDB.buyProduct(userId, productId);
     }
 }

@@ -42,7 +42,7 @@ public class UserIframe {
         productList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ShopList shoplist = new ShopList();
+                ShopList shoplist = new ShopList(user.getId());
             }
         });
         myShop.addMouseListener(new MouseAdapter() {
