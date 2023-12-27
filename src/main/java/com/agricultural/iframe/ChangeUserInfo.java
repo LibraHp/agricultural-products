@@ -48,6 +48,7 @@ public class ChangeUserInfo {
         JFrame frame = new JFrame("initializeComponents");
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setContentPane(main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
