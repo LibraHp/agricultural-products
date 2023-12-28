@@ -12,9 +12,9 @@ public class UserService {
     /**
      * 用户登录方法
      *
-     * @param username
-     * @param password
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @return User 用户
      */
     public static User login(String username, String password) {
         try (ResultSet resultSet = UserDB.login(username,password)) {
@@ -32,7 +32,7 @@ public class UserService {
     /**
      * 获取用户列表
      *
-     * @return
+     * @return List 用户列表
      */
     public static List<User> getUserList() {
         try (ResultSet userList = UserDB.getUserList()) {
@@ -57,8 +57,8 @@ public class UserService {
     /**
      * 查询用户名是否存在
      *
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return boolean 是否存在
      */
     public static boolean checkUser(String username) {
         try (ResultSet resultSet = UserDB.checkUser(username)) {
@@ -76,7 +76,7 @@ public class UserService {
     /**
      * 查询用户
      *
-     * @param id
+     * @param id 用户id
      */
     public static User getUser(int id) {
         try (ResultSet resultSet = UserDB.getUser(id)) {

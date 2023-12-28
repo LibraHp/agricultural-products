@@ -11,7 +11,7 @@ public class SalesDB {
     /**
      * 获取销售统计数据
      *
-     * @return
+     * @return List 销售统计数据
      */
     public static List<Sales> getSalesList() {
         String sql = "SELECT * FROM sales";

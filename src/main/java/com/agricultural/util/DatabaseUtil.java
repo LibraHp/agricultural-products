@@ -19,7 +19,7 @@ public class DatabaseUtil {
     /**
      * 获取数据库连接池
      *
-     * @return
+     * @return 数据库连接
      */
     public static Connection classDbInit() {
         return cn;
@@ -28,9 +28,9 @@ public class DatabaseUtil {
     /**
      * 执行查询sql语句
      *
-     * @param sql
-     * @param params
-     * @return
+     * @param sql 执行的sql语句
+     * @param params 传入的参数
+     * @return 执行结果
      */
     public static ResultSet executeQuery(String sql, Object... params) {
         PreparedStatement pstm = null;
@@ -52,9 +52,9 @@ public class DatabaseUtil {
     /**
      * 执行更新sql语句
      *
-     * @param sql
-     * @param params
-     * @return
+     * @param sql 传入的sql语句
+     * @param params 传入的参数
+     * @return 执行结果
      */
     public static Integer executeUpdate(String sql, Object... params) {
         PreparedStatement pstm = null;
@@ -81,8 +81,8 @@ public class DatabaseUtil {
     /**
      * 执行单句sql
      *
-     * @param sql
-     * @return
+     * @param sql 传入的sql语句
+     * @return 执行结果
      */
     public static ResultSet singleSentenceSql(String sql) {
         Statement stm = null;

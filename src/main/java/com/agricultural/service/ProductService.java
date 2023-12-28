@@ -14,7 +14,7 @@ public class ProductService {
     /**
      * 获取产品列表
      *
-     * @return
+     * @return List 产品列表
      */
     public static List<Product> getProductList() {
         try (ResultSet resultSet = ProductDB.getProductList()) {
@@ -32,8 +32,8 @@ public class ProductService {
     /**
      * 查询产品信息
      *
-     * @param id
-     * @return
+     * @param id 产品id
+     * @return Product 产品对象
      */
     public static Product getProduct(int id) {
         try (ResultSet resultSet = ProductDB.getProduct(id)) {
@@ -51,8 +51,8 @@ public class ProductService {
     /**
      * 通过分类查询产品
      *
-     * @param categoryId
-     * @return
+     * @param categoryId 分类id
+     * @return List 产品列表
      */
     public static List<Product> searchByCategory(int categoryId) {
         try (ResultSet resultSet = ProductDB.searchByCategory(categoryId);) {
@@ -66,8 +66,8 @@ public class ProductService {
     /**
      * 通过名称查询产品
      *
-     * @param name
-     * @return
+     * @param name 产品名称
+     * @return List 产品列表
      */
     public static List<Product> searchByName(String name) {
         try (ResultSet resultSet = ProductDB.searchByName(name);) {
@@ -80,9 +80,9 @@ public class ProductService {
 
     /**
      * 提取resultSet中的List
-     * @param resultSet
-     * @return
-     * @throws SQLException
+     * @param resultSet 查询
+     * @return List
+     * @throws SQLException 抛出异常
      */
     private static List<Product> getProductsList(ResultSet resultSet) throws SQLException {
         List<Product> products = new ArrayList<>();
@@ -101,8 +101,8 @@ public class ProductService {
     /**
      * 通过价格查询产品
      *
-     * @param price
-     * @return
+     * @param price 产品价格
+     * @return List 产品列表
      */
     public static List<Product> searchByPrice(double price) {
         try (ResultSet resultSet = ProductDB.searchByPrice(price)) {

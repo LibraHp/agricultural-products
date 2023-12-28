@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDB {
+    /**
+     * 获取分类列表
+     * @return List 分类列表
+     */
     public static List<Category> getCategoryList(){
         String sql = "SELECT * FROM product_category";
         try(ResultSet resultSet = DatabaseUtil.singleSentenceSql(sql)){
@@ -24,6 +28,12 @@ public class CategoryDB {
             return null;
         }
     }
+
+    /**
+     * 通过id获取分类
+     * @param id 分类id
+     * @return Category 返回分类对象
+     */
     public static Category getCategoryListByID(int id){
         String sql = "SELECT * FROM product_category WHERE id = ?";
         try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, id)){

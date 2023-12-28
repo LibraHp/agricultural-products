@@ -9,7 +9,7 @@ public class UserDB {
     /**
      * 新增用户
      *
-     * @param usr
+     * @param usr 用户
      */
     public static int addUser(User usr) {
         String sql = "insert into user (username, password, email, address, is_admin) values (?, ?, ?, ?, ?)";
@@ -19,7 +19,7 @@ public class UserDB {
     /**
      * 删除用户
      *
-     * @param id
+     * @param id 用户id
      */
     public static int deleteUser(int id) {
         String sql = "delete from user where id = ?";
@@ -29,7 +29,7 @@ public class UserDB {
     /**
      * 修改用户
      *
-     * @param usr
+     * @param usr 用户
      */
     public static int updateUser(User usr) {
         String sql = "update user set username = ?, password = ?, email = ?, address = ?, is_admin = ? where id = ?";
@@ -39,7 +39,7 @@ public class UserDB {
     /**
      * 查询用户
      *
-     * @param id
+     * @param id 用户id
      */
     public static ResultSet getUser(int id) {
         String sql = "select * from user where id = ?";
@@ -56,9 +56,9 @@ public class UserDB {
 
     /**
      * 用户登录方法
-     * @param username
-     * @param password
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @return ResultSet 查询结果，包括用户id，用户名，密码，邮箱，地址，是否为管理R
      */
     public static ResultSet login(String username, String password) {
         String sql = "select * from user where username = ? and password = ?";
@@ -67,8 +67,8 @@ public class UserDB {
 
     /**
      * 检查用户名是否存在
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return ResultSet 查询结果
      */
     public static ResultSet checkUser(String username){
         String sql = "select * from user where username = ?";

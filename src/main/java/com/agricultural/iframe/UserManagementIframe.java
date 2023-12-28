@@ -31,7 +31,7 @@ public class UserManagementIframe {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tableList.getSelectedRow();
-                if (selectedRow == -1){
+                if (selectedRow == -1) {
                     JOptionPane.showMessageDialog(null, "请选择用户");
                     return;
                 }
@@ -56,7 +56,7 @@ public class UserManagementIframe {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tableList.getSelectedRow();
-                if (selectedRow == -1){
+                if (selectedRow == -1) {
                     JOptionPane.showMessageDialog(null, "请选择用户");
                     return;
                 }
@@ -65,10 +65,10 @@ public class UserManagementIframe {
                 int userId = (int) tableList.getValueAt(selectedRow, 0);
                 if (confirm == 0) {
                     int res = UserDB.deleteUser(userId);
-                    if (res == 1){
+                    if (res == 1) {
                         JOptionPane.showMessageDialog(null, "删除成功");
                         initializeTableList();
-                    }else {
+                    } else {
                         JOptionPane.showMessageDialog(null, "删除失败");
                     }
                 }
