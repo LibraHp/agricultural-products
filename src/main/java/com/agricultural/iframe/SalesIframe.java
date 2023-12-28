@@ -46,7 +46,7 @@ public class SalesIframe {
             model.addRow(rowData);
         }
         outTotal.setText(totalSum + " 件");
-        outMoney.setText(moneySum + " 元");
+        outMoney.setText(String.format("%.2f", moneySum) + " 元");
         tableList.setModel(model);
     }
 

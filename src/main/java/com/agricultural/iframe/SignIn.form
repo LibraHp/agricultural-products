@@ -18,7 +18,7 @@
         </constraints>
         <properties>
           <font size="22"/>
-          <text value="注册账号"/>
+          <text value="添加账号"/>
         </properties>
       </component>
       <grid id="d8c56" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -107,7 +107,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="注册"/>
+              <text value="提交"/>
             </properties>
           </component>
           <component id="37700" class="javax.swing.JLabel" binding="repeatPassword">

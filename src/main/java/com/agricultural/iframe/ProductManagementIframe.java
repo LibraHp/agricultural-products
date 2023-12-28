@@ -72,6 +72,12 @@ public class ProductManagementIframe {
                 initializeTableList();
             }
         });
+        categoryManagement.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CategoryManagementIframe categoryManagementIframe = new CategoryManagementIframe();
+            }
+        });
     }
 
     private void initializeTableList() {
