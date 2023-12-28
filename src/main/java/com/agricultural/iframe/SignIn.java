@@ -44,7 +44,7 @@ public class SignIn {
                     user.setIs_admin("0");
                     int res = UserDB.addUser(user);
                     if (res == 1) {
-                        JOptionPane.showMessageDialog(null, "注册成功，请返回登录");
+                        JOptionPane.showMessageDialog(null, "注册成功");
                         frame.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "注册失败");
