@@ -123,4 +123,23 @@ public class CategoryDB {
         String sql = "UPDATE product_category SET name = ? WHERE id = ?";
         return DatabaseUtil.executeUpdate(sql, name, id);
     }
+
+    /**
+     * 通过名称获取分类id
+     * @param name 分类名称
+     * @return int 分类id
+     */
+    public static int fromCategoryGetId(String name){
+        String sql = "SELECT id FROM product_category WHERE name = ?";
+        try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, name)){
+            if (resultSet != null && resultSet.next()) {
+                return resultSet.getInt(1);
+            }else {
+                return 0;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

@@ -53,7 +53,7 @@ public class ChangeProduct {
                 product.setName(inName.getText());
                 product.setPrice(Double.parseDouble(inPrice.getText()));
                 product.setDescription(inDescription.getText());
-                product.setCategoryId(inCategory.getSelectedIndex() + 1);
+                product.setCategoryId(CategoryDB.fromCategoryGetId((String) inCategory.getSelectedItem();));
                 if(isChange) {
                     changeProduct();
                 } else {

@@ -73,28 +73,28 @@ public class ShopList {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = selectModel.getSelectedIndex();
-                switch (selectedIndex){
+                switch (selectedIndex) {
                     case 0:
                         JOptionPane.showMessageDialog(null, "请选择查询的内容");
                         break;
                     case 1:
-                        List<Product> withCategory = ProductService.searchByCategory(categoryList.getSelectedIndex() + 1);
+                        List<Product> withCategory = ProductService.searchByCategory(CategoryDB.fromCategoryGetId((String) categoryList.getSelectedItem()));
                         initializeTableList(withCategory);
                         break;
                     case 2:
-                        if(!searchText.getText().isEmpty()){
+                        if (!searchText.getText().isEmpty()) {
                             List<Product> withPrice = ProductService.searchByPrice(Double.parseDouble(searchText.getText()));
                             initializeTableList(withPrice);
 
-                        }else{
+                        } else {
                             JOptionPane.showMessageDialog(null, "请输入内容！");
                         }
                         break;
                     case 3:
-                        if(!searchText.getText().isEmpty()){
+                        if (!searchText.getText().isEmpty()) {
                             List<Product> withName = ProductService.searchByName(searchText.getText());
                             initializeTableList(withName);
-                        }else{
+                        } else {
                             JOptionPane.showMessageDialog(null, "请输入内容！");
                         }
                         break;
@@ -107,13 +107,13 @@ public class ShopList {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = selectModel.getSelectedIndex();
-                switch (selectedIndex){
+                switch (selectedIndex) {
                     case 1:
                         searchText.setVisible(false);
                         categoryList.setVisible(true);
                         categoryList.removeAllItems();
                         List<Category> categoryItems = CategoryDB.getCategoryList();
-                        for(Category cg : categoryItems){
+                        for (Category cg : categoryItems) {
                             categoryList.addItem(cg.getName());
                         }
                         frame.revalidate();

@@ -58,7 +58,10 @@ public class CategoryManagementIframe {
                     JOptionPane.showMessageDialog(null, "该分类已存在");
                 }else{
                     int categoryId = (int) tableList.getValueAt(selectedRow, 0);
-                    CategoryDB.updateCategory(categoryId, name);
+                    int res = CategoryDB.updateCategory(categoryId, name);
+                    if (res == 1) {
+                        JOptionPane.showMessageDialog(null, "修改成功");
+                    }
                 }
                 initializeTableList();
             }
@@ -75,7 +78,10 @@ public class CategoryManagementIframe {
                 int confirm = JOptionPane.showConfirmDialog(null, "是否删除该分类", "提示", JOptionPane.YES_NO_OPTION);
                 if(confirm == JOptionPane.YES_OPTION){
                     int categoryId = (int) tableList.getValueAt(selectedRow, 0);
-                    CategoryDB.deleteCategory(categoryId);
+                    int res = CategoryDB.deleteCategory(categoryId);
+                    if(res == 1){
+                        JOptionPane.showMessageDialog(null, "删除成功");
+                    }
                     initializeTableList();
                 }
             }
