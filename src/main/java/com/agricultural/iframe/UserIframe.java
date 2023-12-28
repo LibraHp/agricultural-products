@@ -59,6 +59,12 @@ public class UserIframe {
                 SalesIframe salesIframe = new SalesIframe();
             }
         });
+        userManagement.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                UserManagementIframe userManagementIframe = new UserManagementIframe();
+            }
+        });
     }
 
     private void initializeComponents() {
