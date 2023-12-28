@@ -1,11 +1,9 @@
 package com.agricultural.iframe;
 
 import com.agricultural.bean.Product;
-import com.agricultural.bean.User;
 import com.agricultural.dbchange.CategoryDB;
 import com.agricultural.dbchange.ProductDB;
 import com.agricultural.service.ProductService;
-import com.agricultural.service.UserService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,8 +18,8 @@ public class ProductManagementIframe {
     private JScrollPane tableBody;
     private JTable tableList;
     private JPanel management;
-    private JButton addUser;
-    private JButton delUser;
+    private JButton addProduct;
+    private JButton delProdect;
     private JButton edit;
     private JButton reFresh;
     private JButton categoryManagement;
@@ -29,7 +27,7 @@ public class ProductManagementIframe {
     public ProductManagementIframe() {
         initializeComponents();
         initializeTableList();
-        addUser.addActionListener(new ActionListener() {
+        addProduct.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChangeProduct changeProduct = new ChangeProduct(null);
@@ -54,7 +52,7 @@ public class ProductManagementIframe {
                 initializeTableList();
             }
         });
-        delUser.addActionListener(new ActionListener() {
+        delProdect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = tableList.getSelectedRow();
