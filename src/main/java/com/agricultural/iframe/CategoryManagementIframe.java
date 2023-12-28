@@ -74,6 +74,10 @@ public class CategoryManagementIframe {
                     JOptionPane.showMessageDialog(null, "请选择分类");
                     return;
                 }
+                if (CategoryDB.checkCategoryHaveProduct((int) tableList.getValueAt(selectedRow, 0)) != 0) {
+                    JOptionPane.showMessageDialog(null, "该分类已有商品，无法删除");
+                    return;
+                }
                 // 询问是否删除
                 int confirm = JOptionPane.showConfirmDialog(null, "是否删除该分类", "提示", JOptionPane.YES_NO_OPTION);
                 if(confirm == JOptionPane.YES_OPTION){
