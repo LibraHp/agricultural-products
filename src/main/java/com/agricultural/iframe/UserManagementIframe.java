@@ -1,12 +1,15 @@
 package com.agricultural.iframe;
 
 import com.agricultural.bean.User;
+import com.agricultural.dbchange.UserDB;
 import com.agricultural.service.UserService;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class UserManagementIframe {
@@ -18,19 +21,48 @@ public class UserManagementIframe {
     private JPanel management;
     private JButton addUser;
     private JButton delUser;
+    private JButton edit;
+    private JButton reFresh;
 
     public UserManagementIframe() {
         initializeComponents();
         initializeTableList();
-        tableList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        edit.addActionListener(new ActionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    // 获取选中的行索引
-                    int selectedRow = tableList.getSelectedRow();
-                    int userId = (int) tableList.getValueAt(selectedRow, 0);
-                    User user = UserService.getUser(userId);
-                    ChangeUserInfo changeUserInfo = new ChangeUserInfo(user);
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tableList.getSelectedRow();
+                int userId = (int) tableList.getValueAt(selectedRow, 0);
+                User user = UserService.getUser(userId);
+                ChangeUserInfo changeUserInfo = new ChangeUserInfo(user);
+            }
+        });
+        reFresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                initializeTableList();
+            }
+        });
+        addUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignIn signIn = new SignIn();
+            }
+        });
+        delUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 询问是否删除
+                int confirm = JOptionPane.showConfirmDialog(null, "是否删除该用户", "提示", JOptionPane.YES_NO_OPTION);
+                int selectedRow = tableList.getSelectedRow();
+                int userId = (int) tableList.getValueAt(selectedRow, 0);
+                if (confirm == 0) {
+                    int res = UserDB.deleteUser(userId);
+                    if (res == 1){
+                        JOptionPane.showMessageDialog(null, "删除成功");
+                        initializeTableList();
+                    }else {
+                        JOptionPane.showMessageDialog(null, "删除失败");
+                    }
                 }
             }
         });
