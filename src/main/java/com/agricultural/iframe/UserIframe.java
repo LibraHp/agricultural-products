@@ -24,14 +24,14 @@ public class UserIframe {
     private JFrame frame;
     private User user;
 
-    public UserIframe(User user) {
-        this.user = user;
+    public UserIframe() {
+        this.user = Login.user;
         initializeComponents();
         checkAdmin();
         changeInfo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ChangeUserInfo changeUserInfo = new ChangeUserInfo(user);
+                ChangeUserInfo changeUserInfo = new ChangeUserInfo();
             }
         });
         goBack.addMouseListener(new MouseAdapter() {
@@ -44,13 +44,13 @@ public class UserIframe {
         productList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ShopList shoplist = new ShopList(user.getId());
+                ShopList shoplist = new ShopList();
             }
         });
         myShop.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                PurchaseList purchaseList = new PurchaseList(user.getId());
+                PurchaseList purchaseList = new PurchaseList();
             }
         });
         sales.addMouseListener(new MouseAdapter() {

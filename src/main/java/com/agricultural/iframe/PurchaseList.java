@@ -12,9 +12,8 @@ public class PurchaseList {
     private JLabel title;
     private JScrollPane tableBody;
     private JTable tableList;
-    private int userId;
-    public PurchaseList(int userId){
-        this.userId = userId;
+    private int userId = Login.user.getId();
+    public PurchaseList(){
         initializeComponents();
         initializeTableList();
     }

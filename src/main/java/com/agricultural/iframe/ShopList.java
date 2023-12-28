@@ -34,8 +34,9 @@ public class ShopList {
     private JComboBox categoryList;
     private Product selectProduct;
     private JFrame frame;
+    private int userId = Login.user.getId();
 
-    public ShopList(int userId) {
+    public ShopList() {
         initializeComponents();
         categoryList.setVisible(false);
         initializeTableList(ProductService.getProductList());

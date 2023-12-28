@@ -19,6 +19,7 @@ public class Login{
     private JButton resetButton;
     private JLabel signIn;
     private JFrame frame;
+    public static User user;
 
     public Login() {
         initializeComponents();
@@ -29,14 +30,14 @@ public class Login{
                 String username = inUsername.getText();
                 char[] pwd = inPassword.getPassword();
                 String password = new String(pwd);
-                User user = UserService.login(username, password);
+                user = UserService.login(username, password);
                 //判断登录逻辑
                 if (user != null) {
                     JOptionPane.showMessageDialog(null, "登录成功");
                     // 销毁当前页面
                     frame.dispose();
                     // 跳转页面
-                    UserIframe userIframe = new UserIframe(user);
+                    UserIframe userIframe = new UserIframe();
                 }else{
                     JOptionPane.showMessageDialog(null, "登录失败,账号或密码错误");
                 }

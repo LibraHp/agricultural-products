@@ -20,8 +20,9 @@ public class ChangeUserInfo {
     private JLabel mail;
     private JLabel local;
     private JButton submit;
+    private User user = Login.user;
 
-    public ChangeUserInfo(User user) {
+    public ChangeUserInfo() {
         this.inUsername.setText(user.getUsername());
         this.inPassword.setText(user.getPassword());
         this.inMail.setText(user.getEmail());
