@@ -24,7 +24,12 @@ public class ProductService {
             return null;
         }
     }
-
+    /**
+     * 通过用户id和产品id购买商品，添加商品记录
+     * @param userId 用户id
+     * @param productId 产品id
+     * @return int 影响的行数
+     */
     public static int buyProduct(int userId, int productId) {
         return ProductDB.buyProduct(userId, productId);
     }
