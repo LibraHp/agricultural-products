@@ -31,7 +31,7 @@ public class UserIframe {
         changeInfo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ChangeUserInfo changeUserInfo = new ChangeUserInfo();
+                ChangeUserInfo changeUserInfo = new ChangeUserInfo(null);
             }
         });
         goBack.addMouseListener(new MouseAdapter() {
