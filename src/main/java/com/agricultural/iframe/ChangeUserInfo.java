@@ -28,12 +28,12 @@ public class ChangeUserInfo {
 
     public ChangeUserInfo(User changeUser) {
         checkAdmin(changeUser);
-        this.inUsername.setText(user.getUsername());
-        this.inUserNameTextField.setText(user.getUsername());
-        this.inPassword.setText(user.getPassword());
-        this.inMail.setText(user.getEmail());
-        this.inLocal.setText(user.getAddress());
-        this.inIsAdmin.setSelected(user.getIs_admin().equals("1"));
+        inUsername.setText(user.getUsername());
+        inUserNameTextField.setText(user.getUsername());
+        inPassword.setText(user.getPassword());
+        inMail.setText(user.getEmail());
+        inLocal.setText(user.getAddress());
+        inIsAdmin.setSelected(user.getIs_admin().equals("1"));
         initializeComponents();
 
         submit.addActionListener(new ActionListener() {

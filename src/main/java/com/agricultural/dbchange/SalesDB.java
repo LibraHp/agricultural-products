@@ -29,4 +29,17 @@ public class SalesDB {
             return null;
         }
     }
+
+    /**
+     * 初始化产品的销量数据，默认为0
+     * @param productId 产品id
+     */
+    public static void initSales(int productId) {
+        String sql = "INSERT INTO sales (product_id, total_sales) VALUES (?, 0)";
+        DatabaseUtil.executeUpdate(sql, productId);
+    }
+    public static void deleteSales(int productId) {
+        String sql = "DELETE FROM sales WHERE product_id = ?";
+        DatabaseUtil.executeUpdate(sql, productId);
+    }
 }

@@ -14,9 +14,9 @@ public class ProductDB {
      */
     public static int addProduct(Product product) {
         String sql = "INSERT INTO product (name, category_id, price, description) VALUES (?, ?, ?, ?)";
+        SalesDB.initSales(product.getId());
         return DatabaseUtil.executeUpdate(sql, product.getName(), product.getCategoryId(), product.getPrice(), product.getDescription());
     }
-
     /**
      * 删除产品信息
      *
@@ -25,6 +25,7 @@ public class ProductDB {
      */
     public static int deleteProduct(int id) {
         String sql = "DELETE FROM product WHERE id = ?";
+        SalesDB.deleteSales(id);
         return DatabaseUtil.executeUpdate(sql, id);
     }
 
