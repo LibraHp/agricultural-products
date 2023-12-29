@@ -46,15 +46,17 @@ public class ShopList {
                 if (!e.getValueIsAdjusting()) {
                     // 获取选中的行索引
                     int selectedRow = tableList.getSelectedRow();
-                    int productId = (int) tableList.getValueAt(selectedRow, 0);
-                    selectProduct = ProductService.getProduct(productId);
-                    outShopName.setText(selectProduct.getName());
-                    outShopDescription.setText(selectProduct.getDescription());
-                    outShopPrice.setText(Double.toString(selectProduct.getPrice()));
-                    // 显示选中行的数据
-                    Object[] rowData = new Object[tableList.getColumnCount()];
-                    for (int col = 0; col < tableList.getColumnCount(); col++) {
-                        rowData[col] = tableList.getValueAt(selectedRow, col);
+                    if (selectedRow >= 0) {
+                        int productId = (int) tableList.getValueAt(selectedRow, 0);
+                        selectProduct = ProductService.getProduct(productId);
+                        outShopName.setText(selectProduct.getName());
+                        outShopDescription.setText(selectProduct.getDescription());
+                        outShopPrice.setText(Double.toString(selectProduct.getPrice()));
+                        // 显示选中行的数据
+                        Object[] rowData = new Object[tableList.getColumnCount()];
+                        for (int col = 0; col < tableList.getColumnCount(); col++) {
+                            rowData[col] = tableList.getValueAt(selectedRow, col);
+                        }
                     }
                 }
             }

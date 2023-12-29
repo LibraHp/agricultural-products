@@ -33,6 +33,14 @@ public class CategoryManagementIframe {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = JOptionPane.showInputDialog(null, "请输入分类名");
+                if(name == null){
+                    return;
+                }
+                // 输入判空
+                if(name.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "请输入内容");
+                    return;
+                }
                 if(CategoryDB.checkSameName(name)){
                     JOptionPane.showMessageDialog(null, "该分类已存在");
                 }else{
