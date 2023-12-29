@@ -11,5 +11,6 @@
     <orderEntry type="library" name="jgoodies-forms-1.8.0" level="project" />
     <orderEntry type="library" name="jgoodies-common-1.8.0" level="project" />
     <orderEntry type="library" name="beautyeye_lnf" level="project" />
+    <orderEntry type="library" name="forms_rt" level="project" />
   </component>
 </module>

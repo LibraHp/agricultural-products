@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="lib" path="lib/beautyeye_lnf.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-common-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-j-8.0.33.jar"/>
+	<classpathentry kind="lib" path="lib/forms_rt.jar"/>
+	<classpathentry kind="output" path="out/production/Agricultural products"/>
+</classpath>

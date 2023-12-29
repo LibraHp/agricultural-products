@@ -62,11 +62,7 @@ public class UserService {
      */
     public static boolean checkUser(String username) {
         try (ResultSet resultSet = UserDB.checkUser(username)) {
-            if (resultSet != null && resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return resultSet != null && resultSet.next();
         } catch (Exception e) {
             e.printStackTrace();
             return false;

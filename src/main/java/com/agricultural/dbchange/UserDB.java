@@ -10,6 +10,7 @@ public class UserDB {
      * 新增用户
      *
      * @param usr 用户
+     * @return int 影响行数
      */
     public static int addUser(User usr) {
         String sql = "insert into user (username, password, email, address, is_admin) values (?, ?, ?, ?, ?)";
@@ -20,6 +21,7 @@ public class UserDB {
      * 删除用户
      *
      * @param id 用户id
+     * @return int 影响行数
      */
     public static int deleteUser(int id) {
         String sql = "delete from user where id = ?";
@@ -30,6 +32,7 @@ public class UserDB {
      * 修改用户
      *
      * @param usr 用户
+     * @return int 影响行数
      */
     public static int updateUser(User usr) {
         String sql = "update user set username = ?, password = ?, email = ?, address = ?, is_admin = ? where id = ?";
@@ -40,6 +43,7 @@ public class UserDB {
      * 查询用户
      *
      * @param id 用户id
+     * @return ResultSet 查询结果
      */
     public static ResultSet getUser(int id) {
         String sql = "select * from user where id = ?";
@@ -48,6 +52,7 @@ public class UserDB {
 
     /**
      * 获取用户列表
+     * @return ResultSet 查询结果
      */
     public static ResultSet getUserList() {
         String sql = "select * from user";

@@ -59,11 +59,7 @@ public class CategoryDB {
     public static boolean checkSameName(String name){
         String sql = "SELECT * FROM product_category WHERE name = ?";
         try(ResultSet resultSet = DatabaseUtil.executeQuery(sql, name)){
-            if (resultSet != null && resultSet.next()) {
-                return true;
-            }else {
-                return false;
-            }
+            return resultSet != null && resultSet.next();
         }catch (Exception e){
             e.printStackTrace();
             return false;

@@ -60,7 +60,7 @@ public class ProductService {
      * @return List 产品列表
      */
     public static List<Product> searchByCategory(int categoryId) {
-        try (ResultSet resultSet = ProductDB.searchByCategory(categoryId);) {
+        try (ResultSet resultSet = ProductDB.searchByCategory(categoryId)) {
             return getProductsList(resultSet);
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,7 +75,7 @@ public class ProductService {
      * @return List 产品列表
      */
     public static List<Product> searchByName(String name) {
-        try (ResultSet resultSet = ProductDB.searchByName(name);) {
+        try (ResultSet resultSet = ProductDB.searchByName(name)) {
             return getProductsList(resultSet);
         } catch (Exception e) {
             e.printStackTrace();
