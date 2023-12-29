@@ -1,6 +1,6 @@
 -- 创建数据库
 DROP DATABASE IF EXISTS agricultural;
-CREATE DATABASE agricultural;
+CREATE DATABASE agricultural CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 -- 选择数据库
 USE agricultural;
 -- 创建表：农副产品品类
