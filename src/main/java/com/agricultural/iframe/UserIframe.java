@@ -1,6 +1,8 @@
 package com.agricultural.iframe;
 
 import com.agricultural.bean.User;
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
@@ -127,14 +129,14 @@ public class UserIframe {
         CellConstraints cc = new CellConstraints();
         main.add(title, cc.xy(1, 1, CellConstraints.CENTER, CellConstraints.DEFAULT));
         userInfo = new JPanel();
-        userInfo.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
+        userInfo.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
         main.add(userInfo, cc.xy(1, 3));
         userPermission = new JLabel();
         userPermission.setText("您的身份为：用户");
-        userInfo.add(userPermission, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        userInfo.add(userPermission, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         userName = new JLabel();
         userName.setText("欢迎您：user1");
-        userInfo.add(userName, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        userInfo.add(userName, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         userOptions = new JPanel();
         userOptions.setLayout(new FormLayout("fill:d:grow", "center:d:grow,top:4dlu:noGrow,center:max(d;4px):noGrow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
         Font userOptionsFont = this.$$$getFont$$$(null, -1, 18, userOptions.getFont());
@@ -210,4 +212,5 @@ public class UserIframe {
     public JComponent $$$getRootComponent$$$() {
         return main;
     }
+
 }

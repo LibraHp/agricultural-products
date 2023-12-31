@@ -1,6 +1,8 @@
 package com.agricultural.iframe;
 
 import com.agricultural.dbchange.ProductDB;
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
@@ -77,10 +79,10 @@ public class PurchaseList {
      */
     private void $$$setupUI$$$() {
         main = new JPanel();
-        main.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(20, 20, 20, 20), -1, -1));
+        main.setLayout(new GridLayoutManager(1, 1, new Insets(20, 20, 20, 20), -1, -1));
         body = new JPanel();
         body.setLayout(new FormLayout("fill:d:grow", "center:d:noGrow,top:4dlu:noGrow,center:d:grow"));
-        main.add(body, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        main.add(body, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         title = new JLabel();
         Font titleFont = this.$$$getFont$$$(null, -1, 18, title.getFont());
         if (titleFont != null) title.setFont(titleFont);
@@ -126,4 +128,5 @@ public class PurchaseList {
     public JComponent $$$getRootComponent$$$() {
         return main;
     }
+
 }
