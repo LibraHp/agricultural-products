@@ -2,8 +2,6 @@ package com.agricultural.service;
 
 import com.agricultural.bean.Product;
 import com.agricultural.dbchange.ProductDB;
-import com.agricultural.util.DatabaseUtil;
-import com.sun.istack.internal.NotNull;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

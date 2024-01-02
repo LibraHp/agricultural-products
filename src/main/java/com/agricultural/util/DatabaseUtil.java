@@ -1,5 +1,7 @@
 package com.agricultural.util;
 
+import com.agricultural.config.DatabaseConfig;
+
 import java.sql.*;
 
 public class DatabaseUtil {
@@ -7,12 +9,9 @@ public class DatabaseUtil {
 
     static {
         try {
-            String url = "jdbc:mysql://localhost:3306/agricultural";
-            String username = "root";
-            String password = "root";
-            cn = DriverManager.getConnection(url, username, password);
+            cn = DriverManager.getConnection(DatabaseConfig.URL, DatabaseConfig.USERNAME, DatabaseConfig.PASSWORD);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("数据库链接失败，请检查数据库链接配置");
         }
     }
 
