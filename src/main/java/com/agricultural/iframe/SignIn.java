@@ -40,7 +40,7 @@ public class SignIn {
                 } else if (!inPassword.getText().equals(inRepeatPassword.getText())) {
                     JOptionPane.showMessageDialog(null, "两次密码不一致");
                 } else if (UserService.checkUser(inUsername.getText())) {
-                    JOptionPane.showMessageDialog(null, "用户名已存在");
+                    JOptionPane.showMessageDialog(null, "用户名已存在或不符合要求,请重新输入");
                 } else {
                     User user = new User();
                     user.setUsername(inUsername.getText());
