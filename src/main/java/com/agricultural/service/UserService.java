@@ -61,10 +61,6 @@ public class UserService {
      * @return boolean 是否存在
      */
     public static boolean checkUser(String username) {
-        // 检查用户名是否符号要求
-        if (username.length() < 6 || username.length() > 20) {
-            return false;
-        }
         try (ResultSet resultSet = UserDB.checkUser(username)) {
             return resultSet != null && resultSet.next();
         } catch (Exception e) {

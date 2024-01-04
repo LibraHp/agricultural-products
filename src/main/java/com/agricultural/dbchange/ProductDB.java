@@ -62,17 +62,6 @@ public class ProductDB {
     }
 
     /**
-     * 根据分类id获取某个分类的产品
-     *
-     * @param categoryId 分类id
-     * @return ResultSet 查询结果
-     */
-    public static ResultSet getProductListByCategoryId(int categoryId) {
-        String sql = "SELECT * FROM product WHERE category_id = ?";
-        return DatabaseUtil.executeQuery(sql, categoryId);
-    }
-
-    /**
      * 通过用户id和产品id购买商品，添加商品记录
      * @param userId 用户id
      * @param productId 产品id

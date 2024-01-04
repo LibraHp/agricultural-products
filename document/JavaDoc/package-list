@@ -1,5 +1,6 @@
 
 com.agricultural.bean
+com.agricultural.config
 com.agricultural.dbchange
 com.agricultural.iframe
 com.agricultural.service
